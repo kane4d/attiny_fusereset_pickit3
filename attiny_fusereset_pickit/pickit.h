@@ -149,8 +149,8 @@ public:
 	size_t add_cmd(unsigned char cmd1, unsigned char cmd2);
 	size_t add_cmd(unsigned char cmd1, unsigned char cmd2, unsigned char cmd3);
 	size_t add_cmd(unsigned char cmd1, unsigned char cmd2, unsigned char cmd3, unsigned char cmd4);
-	int begin_script(int index = -1);
-	int end_script(void);
+	size_t begin_script(int index = -1);
+	size_t end_script(void);
 	bool read_vol(float& vdd, float& vpp);
 	unsigned int read_status();
 	// mode: true = send/recv, false = only send
@@ -275,7 +275,7 @@ size_t pickit::add_cmd(unsigned char cmd1, unsigned char cmd2, unsigned char cmd
 	return report_position;
 }
 
-int pickit::begin_script(int index)
+size_t pickit::begin_script(int index)
 {
 	if (index >= 0)
 		script_length_position = add_cmd(CMD_DOWNLOAD_SCRIPT(index, 0)) - 1;
@@ -284,13 +284,13 @@ int pickit::begin_script(int index)
 	return script_length_position;
 }
 
-int pickit::end_script(void)
+size_t pickit::end_script(void)
 {
-	int script_length = 0;
+	size_t script_length = 0;
 	if (script_length_position > 0) 
 	{
 		script_length = report_position - script_length_position -1;
-		report[script_length_position] = script_length;
+		report[script_length_position] = static_cast<unsigned char>(script_length);
 	}
 	return script_length;
 }
