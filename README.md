@@ -1,5 +1,5 @@
 # attiny_fusereset_pickit3
-Microchip PICkit3でattiny85のfuseをリセット(low:0x62, high:0xdf)します。
+Microchip PICkit3でattiny85のfuseをリセット(low:0x62, high:0xdf)するCLIアプリケーションです。
 
 未確認ですが
 * attiny24
@@ -12,7 +12,7 @@ PICKit3のファームウエアにはMPLAB IPEで使うファームウエアで�
 
 ファームウエア、ソース、説明書は[PICkit™ 3 Programming App and Scripting Tool](http://ww1.microchip.com/downloads/en/DeviceDoc/PICkit3%20Programmer%20Application%20v3.10.zip "download from archive area")をダウンロードしてください。
 
-!(images/pk3gui2.png)
+![pk3gui3](https://github.com/kane4d/attiny_fusereset_pickit3/blob/master/images/pk3gui2.png?raw=true)
 
 ## HVISP pin接続
 |pickit3|attiny85|
